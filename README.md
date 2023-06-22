@@ -1,6 +1,6 @@
 # README
 
-A clone of Twiiter with basic backend functionalities using Ruby on Rails
+A clone of Twitter with basic backend functionalities using Ruby on Rails
 
 Things you may want to cover:
 
