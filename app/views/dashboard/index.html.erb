@@ -1,0 +1,46 @@
+<div class="container" >
+  <div class="row">
+    <aside class="col side-navbar">
+        <%= link_to root_path, class:"d-flex align-items-center fs-4 mb-4" do %>
+            <div class="px-4 py-4 rounded-circle">
+                <span class:"me-4 position-relative" style="bottom: 3px; margin-right:10px;"> <%= image_tag "twitter.png", width: "32" %> </span>
+            </div>
+        <%end%>
+        <%= link_to root_path, class:"d-flex align-items-center fs-4 mb-4 text-decoration-none" do %>
+            <div class="px-4 py-2 rounded pill">
+                <span class:"me-4 position-relative" style="bottom: 3px; margin-right:10px;"> <%= image_tag "home.png", width: "32" %> </span>
+                Home
+            </div>
+        <%end%>
+        <%= link_to profile_path(@uid), class:"d-flex align-items-center fs-4 mb-4 text-decoration-none" do%> 
+            <div class="px-4 py-2 rounded pill">       
+                <span class:"me-4 position-relative" style="bottom: 3px; margin-right:10px;"> <%= image_tag "home.png", width: "32" %> </span>
+                Profile
+            </div>
+        <%end%>
+        <%= link_to "Log out", destroy_user_session_path, data: { "turbo-method": :delete }, class:"btn btn-primary btn-lg" %>
+    </aside>
+    <div class="col">
+        <%= form_with model: Tweet.new, url: tweets_path, local:true do |f| %>
+            <%= f.text_field:body%>
+            <%= f.submit%>
+        <% end %>
+        <ul>
+            <% Tweet.find_each do |tweet|%>
+                <li>
+                    <%= tweet.body%>
+                    <%= link_to profile_path(tweet.user_id) do %>
+                        <%= User.find(tweet.user_id).username %>
+                    <%end%>
+                </li>
+            <%end%>
+        </ul>
+    </div>
+    <div class="col">
+    <%= form_with url: "/search", method: :get do |form| %>
+        <%= form.text_field :username %>
+        <%= form.submit "Search" %>
+      <% end %>
+    </div>
+  </div>
+</div>

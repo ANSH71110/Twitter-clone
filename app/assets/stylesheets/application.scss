@@ -1,0 +1,14 @@
+@import "bootstrap";
+a{
+    color: rgb(211, 151, 40);
+    text-decoration: none;
+
+    div{
+        &:hover{
+        opacity: 1.0;
+        transition: opacity .55s ease-in-out;
+        -moz-transition: opacity .55s ease-in-out;
+        -webkit-transition: opacity .55s ease-in-out;   
+        }
+    }   
+}

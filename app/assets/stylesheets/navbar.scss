@@ -1,0 +1,14 @@
+aside.side-navbar{
+    a{
+        color: black;
+
+        div{
+            &:hover{
+            opacity: 1.0;
+            transition: opacity .55s ease-in-out;
+            -moz-transition: opacity .55s ease-in-out;
+            -webkit-transition: opacity .55s ease-in-out;   
+            }
+        }   
+    }
+}

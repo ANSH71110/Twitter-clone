@@ -1,0 +1,18 @@
+<div class="container" >
+    <div class="row">
+        <aside class="col side-navbar">
+            <%= link_to root_path, class:"d-flex align-items-center fs-4 mb-4" do %>
+            <div class="px-4 py-4 rounded-circle">
+                <span class:"me-4 position-relative" style="bottom: 3px; margin-right:10px;"> <%= image_tag "twitter.png", width: "32" %> </span>
+            </div>
+            <%end%>
+        </aside>
+        <div class="col"> 
+        <br><br><br>
+        <h3>FOLLOWER LIST of <%=@user.username %></h3>
+        <p><% Follow.where(following_id:@user.id).each do |f|%>
+            <%= link_to profile_path(f.user_id) do %>
+                <ul><%= User.find(f.user_id).username%></ul>
+            <%end%>
+        <%end%></p>
+</div>
